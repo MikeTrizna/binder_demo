@@ -1,0 +1,10 @@
+name: binder_demo
+channels:
+  - defaults
+  - plotly
+dependencies:
+  - notebook
+  - pandas
+  - plotly_express
+prefix: /Users/teaching/miniconda3/envs/binder_demo
+
