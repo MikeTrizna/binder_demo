@@ -90,22 +90,69 @@ fig = px.scatter(gap_df,
 fig.show()
 ```
 
-## Post notebook to GitHub
+## Commit notebook to GitHub
 
-Uh oh, that probably didn't work.
+Don't need to commit .ipynb_checkpoint files/folders.
 
-## Add extra bits to GitHub repo for Binder to work
+By default, GitHub renders notebooks, but it doesn't always render all elements properly. Videos don't embed, interactive plotly plots don't display.
 
-### Add data directly to repo
+If you share the file, you need to tell the recipient which packages to install and provide them the data
+- add data to repo directory and make link relative
+
+## Add data to GitHub repo
+
+Change read_csv function to read from a relative path
+
+Commit data file to GitHub repo
+
+## Add details of conda environment to GitHub repo
+
+In order for a collaborator to run the notebook (or for Binder to set up the environment properly), they need to have the correct packages installed in their conda environment.
 
 ### Export conda details to environment.yml
 
+In terminal/command line (either local machine or Jupyter):
+
+`conda env export`: shows all packages installed and their exact version. Too detailed!
+
+`conda env export --from-history`: shows all packages you explicitly told conda to install
+
+`conda env export --from-history > environment.yml`: saves conda environment to a YAML file, environment.yml
+
+In text editor, edit environment.yml. Add `- plotly` as a second channel below `- default`.
+
+Commit environment.yml to GitHub repo. Can commit it in its own directory, `binder`.
+
+### Create conda environment from YAML file
+
+`conda env create -f environment.yml`: creates a new conda environment based on the specifications from environment.yml. Binder will automatically take care of this, but a user could manually create a new environment this way.
+
 ## Binder
 
-### Binder explanation
+mybinder.org
 
-## Binder R example
+Takes a GitHub repository as input. As long as repo contains certain files, Binder builds and hosts an entire Jupyter environment that anyone can use.
 
-## Other links
+Binder provides code that you can include in your repository's README.md file, to direct people to the Binder instance.
+
+Takes a while to build the first time, but once built, it's cached for a while. (Maybe a month?)
+
+Once in the Jupyter browser, can use Upload button to upload your own data to Binder instance.
+
+Limited to 1 GB of memory, so not a good tool for memory-intensive processes.
+
+Size of data file is limited by the size of data file you can store in a GitHub repo.
+
+There are ways to run R Shiny or OpenRefine through Binder environments.
+
+## Other languages
+
+Can use other languages in Jupyter notebook besides Python. Specifically, you can set up notebook to run R code.
+
+conda has provided compiled versions of other libraries (r-dplyr, r-ggplot2). These can be imported into the Jupyter notebook, and can be run with an R kernel.
+
+When running these, libraries can just be imported in the notebook normally (`library(dplyr)`, `library(ggplot2)`)
+
+`ggplotly()`: function that wraps a ggplot-created graph, adds plotly interactivity
 
 [Spacy 101](https://spacy.io/usage/spacy-101)
