@@ -1,5 +1,7 @@
 # Using GitHub/MyBinder to share Jupyter notebooks (R and Python)
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/MikeTrizna/binder_demo/HEAD)
+
 Today's demo will attempt to show how MyBinder is a more powerful tool for sharing Jupyter notebooks. They allow you to share an interactive version of your notebook, along with the associated data. As an added bonus, the environment specification files needed to make MyBinder run properly are best practice for sharing notebooks and analyses with collaborators.
 
 ## Create a GitHub repository to track progress and store files
